@@ -23,7 +23,7 @@ namespace CalculatorApp
         private void CalculatorButtons(object sender, EventArgs e)
         {
             //When a new number is selected its gonna start in a new blank label
-            if (currentState > 1)
+            if (currentState > 0)
             {
                 displayLbl.Text = " ";
             }
@@ -75,16 +75,11 @@ namespace CalculatorApp
 
         private void EqualButton(object sender, EventArgs e)
         {
-            if (currentState == 2 || currentState == 1)
+            if (currentState > 0)
             {
                 CalculateNumbers();
                 currentState = 1;
                 
-            }
-            else if (currentState == 3)
-            {
-                CalculateNumbers();
-                currentState = 1;
             }
         }
 
