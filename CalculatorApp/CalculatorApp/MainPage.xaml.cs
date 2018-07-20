@@ -24,9 +24,13 @@ namespace CalculatorApp
         private void CalculatorButtons(object sender, EventArgs e)
         {
             //When a new number is selected its gonna start in a new blank label
-            if (currentState > 1)
+            if (currentState < 0 || currentState == 3 || currentState == 4)
             {
                 displayLbl.Text = " ";
+                if (currentState < 0)
+                {
+                    currentState *= -1;
+                }
             }
             displayLbl.Text += ((Button)sender).Text;
             //if the currentState is 1 then its gonna parse to number1 if not then parse number2
@@ -55,7 +59,7 @@ namespace CalculatorApp
             if (currentState == 1)
             {
                 mathOperator = operatorButton.Text;
-                currentState = 2;
+                currentState = -2;
             }
             else if (currentState == 2)
             {
