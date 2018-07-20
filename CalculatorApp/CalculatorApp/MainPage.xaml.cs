@@ -17,13 +17,14 @@ namespace CalculatorApp
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             currentState = 1;
         }
 
         private void CalculatorButtons(object sender, EventArgs e)
         {
             //When a new number is selected its gonna start in a new blank label
-            if (currentState > 0)
+            if (currentState > 1)
             {
                 displayLbl.Text = " ";
             }
@@ -42,6 +43,10 @@ namespace CalculatorApp
             {
                 currentState = 2;
             }
+            else if (currentState == 4)
+            {
+                currentState = 1;
+            }
         }
 
         private void OperatorButton(object sender, EventArgs e)
@@ -51,7 +56,6 @@ namespace CalculatorApp
             {
                 mathOperator = operatorButton.Text;
                 currentState = 2;
-                //NoEqualCalculate();
             }
             else if (currentState == 2)
             {
@@ -65,6 +69,7 @@ namespace CalculatorApp
             var result = calculateResult.Result(number1, number2, mathOperator);
             displayLbl.Text = result.ToString();
             number1 = result;
+            ReturnResult();
         }
 
         public void NoEqualCalculate()
@@ -78,8 +83,19 @@ namespace CalculatorApp
             if (currentState > 0)
             {
                 CalculateNumbers();
-                currentState = 1;
+                currentState = 4;
             }
+        }
+
+        async void HistoryButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HistoryList());
+        }
+
+        public double ReturnResult()
+        {
+            Double.TryParse(displayLbl.Text, out double x);
+            return x;
         }
 
         private void ClearButton(object sender, EventArgs e)

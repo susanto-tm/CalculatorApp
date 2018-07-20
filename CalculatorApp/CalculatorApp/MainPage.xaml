@@ -61,7 +61,8 @@
             </Label>
 
             <!--AC and Divide-->
-            <Button Text="AC" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource buttonGrey}" Clicked="ClearButton"/>
+            <Button Text="AC" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource buttonGrey}" Clicked="ClearButton"/>
+            <Button Text="History" Grid.Row="1" Grid.Column="2" Style="{StaticResource buttonGrey}" Clicked="HistoryButton"/>
             <Button Text="÷" Grid.Row="1" Grid.Column="3" Style="{StaticResource buttonYellow}" Clicked="OperatorButton"/>
 
             <!--Third Row-->
