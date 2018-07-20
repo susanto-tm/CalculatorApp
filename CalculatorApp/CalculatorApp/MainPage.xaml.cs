@@ -79,7 +79,6 @@ namespace CalculatorApp
             {
                 CalculateNumbers();
                 currentState = 1;
-                
             }
         }
 
